@@ -75,8 +75,8 @@ const badges: Badge[] = [
 // Create mock user data
 export const mockUser: User = {
   id: 'user-1',
-  name: '김투자',
-  profileImage: 'https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=150',
+  name: '김고앵',
+  profileImage: 'https://perfectpetinsurance.co.uk/wp-content/uploads/2025/02/Cat-lays-happily_cat-insurance.jpg?w=150',
   badges,
   accuracy: 68,
   totalConstellations: 3,
@@ -176,8 +176,8 @@ export const mockUser: User = {
 export const mockFriends = [
   {
     id: 'friend-1',
-    name: '이주주',
-    profileImage: 'https://images.pexels.com/photos/1858175/pexels-photo-1858175.jpeg?auto=compress&cs=tinysrgb&w=150',
+    name: '박냐옹',
+    profileImage: 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQd1kWKsODGmz1P44kiLTfpeIOkaemYITnaRVOZEn372xCyrpNoQQ_dMDAV4dWLpVTDFekNEtlkJaDnhlTzoQWdNg',
     badges: badges.slice(0, 2),
     accuracy: 72,
     totalConstellations: 5,
@@ -194,8 +194,8 @@ export const mockFriends = [
   },
   {
     id: 'friend-2',
-    name: '박별별',
-    profileImage: 'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=150',
+    name: '장고양',
+    profileImage: 'https://cdn.royalcanin-weshare-online.io/PjI4w28BN5A8uWWACTPJ/v1/ktcb1-kitten-sitting-on-a-cat-tree',
     badges: badges.slice(1, 3),
     accuracy: 81,
     totalConstellations: 7,
