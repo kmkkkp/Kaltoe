@@ -8,7 +8,7 @@ interface LayoutProps {
 
 export const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
-    <div className="flex flex-col min-h-screen bg-gradient-to-b from-indigo-950 via-[#090b1f] to-black text-white overflow-hidden">
+    <div className="relative flex flex-col min-h-screen bg-gradient-to-b from-indigo-950 via-[#090b1f] to-black text-white">
       <div className="stars absolute inset-0 pointer-events-none"></div>
       <div className="galaxy absolute inset-0 pointer-events-none"></div>
       

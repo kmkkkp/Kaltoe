@@ -135,26 +135,42 @@ export const ChallengeModal: React.FC<ChallengeModalProps> = ({
         )}
 
         {type === 'writing' && (
-          <div>
-            <h3 className="text-xl font-bold text-white mb-4">투자 글쓰기</h3>
-            <textarea
-              className="w-full h-40 p-3 rounded-lg bg-white/10 text-white resize-none"
-              placeholder="오늘의 투자 전략이나 관심 종목에 대해 작성해주세요. (최소 100자)"
-              value={content}
-              onChange={(e) => setContent(e.target.value)}
-            />
-            <div className="text-right mt-2 text-gray-400">
-              {content.length}/100자
+        <div>
+          <h3 className="text-xl font-bold text-white mb-4">투자 글쓰기</h3>
+
+          {/* 👇 여기 추가 */}
+         <div className="bg-gradient-to-br from-indigo-500/10 to-purple-500/10 border border-white/10 rounded-2xl p-4 text-sm text-indigo-100 shadow-inner mb-4 animate-fade-in">
+            <div className="flex items-start gap-2">
+              <span className="text-indigo-300 text-lg">💡</span>
+              <div>
+                <p className="font-semibold mb-1 text-indigo-200">이런 걸 써보면 어때요?</p>
+                <ul className="list-disc list-inside space-y-1 text-indigo-100 text-sm leading-relaxed">
+                  <li>요즘 주목하는 종목과 그 이유</li>
+                  <li>시장 흐름에 대한 내 생각</li>
+                  <li>이번 주의 나만의 투자 전략</li>
+                </ul>
+              </div>
             </div>
-            <Button
-              variant="primary"
-              className="w-full mt-4"
-              onClick={handleWritingSubmit}
-            >
-              제출하기
-            </Button>
           </div>
-        )}
+          <textarea
+            className="w-full h-40 p-3 rounded-lg bg-white/10 text-white resize-none"
+            placeholder="오늘의 투자 전략이나 관심 종목에 대해 작성해주세요. (최소 100자)"
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+          />
+          <div className="text-right mt-2 text-gray-400">
+            {content.length}/100자
+          </div>
+          <Button
+            variant="primary"
+            className="w-full mt-4"
+            onClick={handleWritingSubmit}
+          >
+            제출하기
+          </Button>
+        </div>
+      )}
+
 
         {type === 'prediction' && (
           <div>

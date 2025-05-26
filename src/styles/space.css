@@ -1,7 +1,14 @@
 /* Space background with stars and galaxy effect */
-.stars {
-  background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
-  overflow: hidden;
+.stars, .galaxy {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  pointer-events: none;
+  z-index: 0;
 }
 
 .stars::before {
