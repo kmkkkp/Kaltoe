@@ -96,12 +96,20 @@ export const HomePage: React.FC = () => {
             <GlassCard className="mt-4">
               <div className="flex justify-between items-start mb-4">
                 <div>
-                  <h3 className="text-xl font-bold text-white">
-                    {selectedConstellationData.nameKorean}
-                    <span className="text-indigo-300 ml-2 text-sm">
-                      ({selectedConstellationData.name})
+                  <h3
+                    className="text-white font-bold text-xl inline-flex max-w-full whitespace-nowrap"
+                    style={{
+                      fontSize: 'clamp(12px, 4vw, 20px)', // 반응형 --> 글자 크기 자동 조절
+                    }}
+                  >
+                    <span className="truncate">
+                      {selectedConstellationData.nameKorean}
+                      <span className="text-indigo-300 ml-2 text-sm">
+                        ({selectedConstellationData.name})
+                      </span>
                     </span>
                   </h3>
+
                   <p className="text-gray-300 text-sm mt-1">
                     {new Date(selectedConstellationData.startDate).toLocaleDateString()} ~ 
                     {selectedConstellationData.endDate 
