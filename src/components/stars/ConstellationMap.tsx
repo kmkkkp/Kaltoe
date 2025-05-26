@@ -91,7 +91,7 @@ export const ConstellationMap: React.FC<ConstellationMapProps> = ({
         {constellations.map((constellation) => (
           <div
             key={constellation.id}
-            className="absolute inset-0"
+            
             onClick={() => onConstellationClick?.(constellation.id)}
           >
             {/* SVG for lines */}
@@ -121,12 +121,7 @@ export const ConstellationMap: React.FC<ConstellationMapProps> = ({
                   opacity: 0.8,
                 }}
               >
-                <div className="text-white text-lg font-semibold tracking-wider">
-                  {constellation.nameKorean}
-                </div>
-                <div className="text-indigo-300 text-sm">
-                  {constellation.name}
-                </div>
+
               </div>
             )}
           </div>
