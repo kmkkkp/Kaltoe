@@ -163,21 +163,39 @@ export const ChallengeModal: React.FC<ChallengeModalProps> = ({
               내일의 KOSPI 종가 수익률을 예측해주세요.
               결과는 다음 날 장 마감 후 확인됩니다.
             </p>
-            <input
-              type="number"
-              step="0.1"
-              className="w-full p-3 rounded-lg bg-white/10 text-white"
-              placeholder="예상 수익률 입력 (예: 1.5)"
-              value={prediction ?? ''}
-              onChange={(e) => setPrediction(parseFloat(e.target.value))}
-            />
-            <Button
-              variant="primary"
-              className="w-full mt-4"
-              onClick={handlePredictionSubmit}
-            >
-              예측하기
-            </Button>
+          <div className="grid grid-cols-2 gap-4">
+          <button
+            onClick={() => setPrediction(1)}
+            className={`aspect-square rounded-2xl flex flex-col justify-center items-center border transition-all duration-300 ${
+              prediction === 1
+                ? 'bg-red-500/30 border-red-400 text-red-100 shadow-lg'
+                : 'bg-white/10 border-white/20 text-white hover:bg-white/20'
+            }`}
+          >
+            <span className="text-3xl">📈</span>
+            <span className="mt-2 text-sm font-semibold">오를 것 같아요</span>
+          </button>
+
+          <button
+            onClick={() => setPrediction(-1)}
+            className={`aspect-square rounded-2xl flex flex-col justify-center items-center border transition-all duration-300 ${
+              prediction === -1
+                ? 'bg-blue-500/30 border-blue-400 text-blue-100 shadow-lg'
+                : 'bg-white/10 border-white/20 text-white hover:bg-white/20'
+            }`}
+          >
+            <span className="text-3xl">📉</span>
+            <span className="mt-2 text-sm font-semibold">내릴 것 같아요</span>
+          </button>
+        </div>
+
+        <Button
+          variant="primary"
+          className="w-full mt-6"
+          onClick={handlePredictionSubmit}
+        >
+          예측 제출
+        </Button>
           </div>
         )}
       </GlassCard>
