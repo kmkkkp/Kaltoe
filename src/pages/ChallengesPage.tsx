@@ -27,10 +27,10 @@ export const ChallengesPage: React.FC = () => {
       <header className="mb-6">
         <h1 className="text-2xl font-bold text-white text-center">오늘의 챌린지</h1>
         <p className="text-indigo-200 text-center mt-2">
-          매일 새로운 활동을 통해 별을 밝혀보세요
+          {new Date().toLocaleDateString('ko-KR', { month: 'long', day: 'numeric', weekday: 'short' })} · 오늘 별을 밝혀보세요 ✨
         </p>
       </header>
-      
+
       {user.currentConstellation ? (
         <>
           <GlassCard className="mb-6">
