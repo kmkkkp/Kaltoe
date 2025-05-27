@@ -1,0 +1,145 @@
+/* Splash Screen Styles */
+.splash-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  z-index: 1000;
+}
+
+/* Space Background */
+.space-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.galaxy-gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, #1a1a4f 0%, #0f1020 40%, #0a0a18 70%, #030311 100%);
+}
+
+.background-star {
+  position: absolute;
+  border-radius: 50%;
+  background-color: #ffffff;
+  animation: twinkle 4s infinite ease-in-out;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+/* Content Styling */
+.splash-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  z-index: 10;
+}
+
+.app-title {
+  color: #ffffff;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  opacity: 0;
+  animation: fadeIn 0.8s ease-out forwards;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+}
+
+.app-subtitle {
+  color: #d9e3ff;
+  font-size: 1.1rem;
+  font-weight: 400;
+  margin-bottom: 2rem;
+  opacity: 0;
+  animation: fadeIn 0.8s ease-out 0.3s forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Constellation Styling */
+.constellation-container {
+  width: 100%;
+  max-width: 500px;
+  height: 200px;
+  position: relative;
+}
+
+.constellation {
+  width: 100%;
+  height: 100%;
+}
+
+.star-group {
+  opacity: 0;
+  transform: scale(0);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.star-group.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.star {
+  filter: drop-shadow(0 0 4px currentColor);
+}
+
+.star-glow {
+  opacity: 0.5;
+}
+
+.constellation-line {
+  opacity: 0;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  transition: opacity 0.3s ease;
+}
+
+.constellation-line.visible {
+  opacity: 1;
+  animation: drawLine 1.2s ease-out forwards;
+}
+
+@keyframes drawLine {
+  from { stroke-dashoffset: 100; }
+  to { stroke-dashoffset: 0; }
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .app-title {
+    font-size: 1.8rem;
+  }
+  
+  .app-subtitle {
+    font-size: 0.9rem;
+  }
+  
+  .constellation-container {
+    max-width: 350px;
+    height: 180px;
+  }
+}
