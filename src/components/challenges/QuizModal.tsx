@@ -15,16 +15,49 @@ export const QuizModal: React.FC<{ onClose: () => void; onComplete: () => void }
   const [result, setResult] = useState<number | null>(null);
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/quiz/today")
-      .then(res => res.json())
-      .then(data => {
-        setQuestions(data.questions);
-        setUserAnswers(Array(data.questions.length).fill(-1));
-      })
-      .catch(err => {
-        console.error("퀴즈 불러오기 실패:", err);
-      });
-  }, []);
+    const apiKey = import.meta.env.VITE_OPENAI_API_KEY;
+
+    const fetchQuiz = async () => {
+        try {
+        const res = await fetch("https://api.openai.com/v1/chat/completions", {
+            method: "POST",
+            headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${apiKey}`,
+            },
+            body: JSON.stringify({
+            model: "gpt-3.5-turbo",
+            messages: [
+                {
+                role: "user",
+                content: `
+    너는 주식 퀴즈 출제자야. 오늘의 객관식 퀴즈 5문제를 아래 형식으로 생성해줘.
+    각 문제는 "question", "options"(4개), "answer"(정답 인덱스, 0부터 시작)로 구성된 JSON 배열이야.
+    [
+    {
+        "question": "2023년 기준 코스피 시가총액 1위 기업은?",
+        "options": ["삼성전자", "LG에너지솔루션", "카카오", "현대차"],
+        "answer": 0
+    },
+    ...
+    ]
+    `,
+                },
+            ],
+            }),
+        });
+
+        const data = await res.json();
+        const parsed = JSON.parse(data.choices[0].message.content);
+        setQuestions(parsed);
+        setUserAnswers(Array(parsed.length).fill(-1));
+        } catch (err) {
+        console.error("GPT 호출 실패:", err);
+        }
+    };
+
+    fetchQuiz();
+    }, []);
 
   const handleAnswer = (choice: number) => {
     const updated = [...userAnswers];
