@@ -15,7 +15,7 @@ export const QuizModal: React.FC<{ onClose: () => void; onComplete: () => void }
 
 //   
 useEffect(() => {
-  fetch("http://localhost:5000/api/quiz/today")
+  fetch("http://localhost:3000/api/quiz/today")
     .then(res => res.json())
     .then(data => {
       setQuestions(data.questions);
