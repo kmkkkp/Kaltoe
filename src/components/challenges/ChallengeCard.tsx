@@ -4,6 +4,7 @@ import { GlassCard } from '../ui/GlassCard';
 import { Button } from '../ui/Button';
 import { BookOpen, BarChart, PenTool } from 'lucide-react';
 import { ChallengeModal } from './ChallengeModal';
+import { QuizModal } from './QuizModal';
 
 import quizIcon from '../../assets/icons/quiz.svg';
 import writeIcon from '../../assets/icons/write.svg';
@@ -91,12 +92,19 @@ export const ChallengeCard: React.FC<ChallengeCardProps> = ({
         </div>
       </GlassCard>
 
-      {showModal && (
-        <ChallengeModal
-          type={type}
-          onClose={() => setShowModal(false)}
-          onComplete={handleComplete}
+      {showModal && type === 'quiz' ? (
+        <QuizModal 
+          onClose={() => setShowModal(false)} 
+          onComplete={handleComplete} 
         />
+      ) : (
+        showModal && (
+          <ChallengeModal
+            type={type}
+            onClose={() => setShowModal(false)}
+            onComplete={handleComplete}
+          />
+        )
       )}
     </>
   );
