@@ -48,12 +48,19 @@ export const HistoryPage: React.FC = () => {
               <div className="p-4 bg-black/30 border-b border-indigo-900/30">
                 <div className="flex justify-between items-center">
                   <div>
-                    <h2 className="text-xl font-semibold text-white">
-                      {constellation.nameKorean}
-                      <span className="text-indigo-300 ml-2 text-sm">
-                        ({constellation.name})
+                    <h3
+                      className="text-white font-bold text-xl inline-flex max-w-full whitespace-nowrap"
+                      style={{
+                        fontSize: 'clamp(12px, 4vw, 20px)', // 반응형 --> 글자 크기 자동 조절
+                      }}
+                    >
+                      <span className="truncate">
+                        {constellation.nameKorean}
+                        <span className="text-indigo-300 ml-2 text-sm">
+                          ({constellation.name})
+                        </span>
                       </span>
-                    </h2>
+                    </h3>
                     <div className="flex items-center text-gray-300 text-sm mt-1">
                       <Calendar size={14} className="mr-1" />
                       <span>
