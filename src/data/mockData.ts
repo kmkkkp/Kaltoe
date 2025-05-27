@@ -35,6 +35,7 @@ const createCompletedConstellation = (
   
   return {
     id: `constellation-${templateId}-${startDaysAgo}`,
+    templateId: templateId,
     name: template.name,
     nameKorean: template.nameKorean,
     description: template.description,
@@ -267,7 +268,21 @@ export const mockFriends = [
       aborted: false
     },
     completedConstellations: [
-      createCompletedConstellation('orion', 30, Array(12).fill(['quiz', 'prediction']))
+      createCompletedConstellation('orion', 30, Array(12).fill(['quiz', 'prediction'])), 
+      createCompletedConstellation('cancer', 40, [
+        ['quiz', 'writing'],
+        ['quiz', 'prediction'],
+        ['writing', 'prediction'],
+        ['quiz', 'writing', 'prediction']
+      ]),
+      createCompletedConstellation('ursa-minor', 20, [
+        ['quiz', 'writing'],
+        ['quiz', 'prediction'],
+        ['writing', 'prediction'],
+        ['quiz', 'writing', 'prediction'],
+        ['quiz'],
+        ['prediction']
+      ])
     ],
     friends: ['user-1']
   }

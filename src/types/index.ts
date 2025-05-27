@@ -12,6 +12,7 @@ export interface Star {
 
 export interface Constellation {
   id: string;
+  templateId: string;
   name: string;
   nameKorean: string;
   description: string;

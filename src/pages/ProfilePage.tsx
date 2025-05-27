@@ -55,13 +55,14 @@ function drawStars(canvas) {
     });
     requestAnimationFrame(animate);
   }
-  animate();
+  //animate();
 }
 
 function drawConstellation(canvas, template) {
   if (!canvas || !template) return;
   const ctx = canvas.getContext('2d');
-
+  
+  console.log(template);
   ctx.strokeStyle = 'white';
   ctx.lineWidth = 1.5;
   ctx.fillStyle = '#ffffff';
@@ -121,11 +122,11 @@ export const ProfilePage: React.FC = () => {
     });
   }, []);
 
-  const handleViewConstellation = (friendName: string, constellationId = 'cancer') => {
-    const template = constellationTemplates.find(t => t.id === constellationId);
-
+  const handleViewConstellation = (friendName: string, constellationIds: string[] = []) => {
+    const templates = constellationTemplates.filter(t => constellationIds.includes(t.id));
     const overlay = document.createElement('div');
     overlay.className = 'fixed inset-0 bg-gradient-to-br from-purple-900/90 to-indigo-900/90 z-50 flex items-center justify-center text-white p-6';
+
     overlay.innerHTML = `
       <div class='relative w-full max-w-3xl bg-purple-950/60 backdrop-blur-xl rounded-xl shadow-2xl p-8 border border-indigo-500'>
         <h2 class='text-2xl font-bold mb-6 text-center'>${friendName}님의 별자리</h2>
@@ -139,8 +140,13 @@ export const ProfilePage: React.FC = () => {
     if (canvas) {
       canvas.width = canvas.offsetWidth;
       canvas.height = canvas.offsetHeight;
-      drawStars(canvas);
-      drawConstellation(canvas, template);
+      
+      // drawStars(canvas); // 별 그리기
+      
+      // 각 별자리 템플릿 반복
+      templates.forEach(template => {
+        drawConstellation(canvas, template); // 별자리 그리기
+      });
     }
 
     overlay.querySelector('button')?.addEventListener('click', () => overlay.remove());
@@ -220,14 +226,16 @@ export const ProfilePage: React.FC = () => {
           <Users size={20} className="mr-2 text-purple-400" /> 친구 목록
         </h3>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {mockFriends.map((friend) => (
+          {mockFriends.map((friend) => {
+            const allConstellations = friend.completedConstellations.map(c=>c.templateId)
+            return (
             <div className="transition-transform hover:scale-[1.02]" key={friend.id}>
               <FriendProfile 
                 friend={friend}
-                onViewConstellations={() => handleViewConstellation(friend.name, friend.constellationId)}
+                onViewConstellations={() => handleViewConstellation(friend.name, allConstellations)}
               />
             </div>
-          ))}
+          )})}
         </div>
       </section>
     </div>
