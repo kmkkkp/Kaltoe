@@ -13,28 +13,18 @@ export const QuizModal: React.FC<{ onClose: () => void; onComplete: () => void }
   const [userAnswers, setUserAnswers] = useState<number[]>([]);
   const [result, setResult] = useState<number | null>(null);
 
-  useEffect(() => {
-    // TODO: GPT로 만든 퀴즈 받아오기 (현재는 임시 하드코딩)
-    const sample = [
-      {
-        question: "2023년 기준 코스피 시가총액 1위 기업은?",
-        options: ["삼성전자", "LG에너지솔루션", "카카오", "현대차"],
-        answer: 0,
-      },
-      {
-        question: "PER(주가수익비율)은 무엇을 의미하나요?",
-        options: [
-          "주가를 순이익으로 나눈 값",
-          "주가를 자산으로 나눈 값",
-          "이자율과 주가 비율",
-          "미래 배당금 비율",
-        ],
-        answer: 0,
-      },
-    ];
-    setQuestions(sample);
-    setUserAnswers(Array(sample.length).fill(-1));
-  }, []);
+//   
+useEffect(() => {
+  fetch("http://localhost:5000/api/quiz/today")
+    .then(res => res.json())
+    .then(data => {
+      setQuestions(data.questions);
+      setUserAnswers(Array(data.questions.length).fill(-1));
+    })
+    .catch(err => {
+      console.error("퀴즈 불러오기 실패:", err);
+    });
+}, []);
 
   const handleAnswer = (index: number, choice: number) => {
     const updated = [...userAnswers];
