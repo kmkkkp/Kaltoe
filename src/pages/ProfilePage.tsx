@@ -55,7 +55,7 @@ function drawStars(canvas) {
     });
     requestAnimationFrame(animate);
   }
-  //animate();
+  animate();
 }
 
 function drawConstellation(canvas, template) {
