@@ -29,8 +29,8 @@ export const ConstellationMap: React.FC<ConstellationMapProps> = ({
           memo = { x: position.x, y: position.y };
         }
         setPosition({
-          x: memo.x + mx / scale,
-          y: memo.y + my / scale,
+          x: memo.x + mx,
+          y: memo.y + my,
         });
         return memo;
       },
@@ -79,7 +79,7 @@ export const ConstellationMap: React.FC<ConstellationMapProps> = ({
   return (
     <div 
       ref={mapRef} 
-      className="relative w-full h-full overflow-hidden bg-transparent rounded-lg"
+      className="relative w-full h-full overflow-hidden bg-transparent rounded-lg touch-none"
     >
       <div
         className="absolute w-full h-full transition-transform duration-300"
