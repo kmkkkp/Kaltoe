@@ -13,7 +13,7 @@
 | Title         | Img                                   | Title         | Img                                   |
 | ------------ | ---------------------------------------- | ------------ | ---------------------------------------- |
 | 메인 스크린    | <img width="731" alt="스크린샷 2025-05-27 오후 2 10 03" src="https://github.com/user-attachments/assets/69216d5f-88cf-45f4-be6c-da685d4297e9" /> | 챌린지 스크린 | <img width="731" alt="image" src="https://github.com/user-attachments/assets/badf94e0-536c-4a74-a2d5-68562048d467" />
-| 히스토리 스크린 | <img width="782" alt="image" src="https://github.com/user-attachments/assets/bf91036e-6e8a-4834-90d2-e834e63452da" /> | n번째 자서전 스크린 |<img width="831" alt="image" src="https://github.com/user-attachments/assets/76dff679-d871-49de-b7ba-89da587e4187" />| 
+| 히스토리 스크린 | <img width="782" alt="image" src="https://github.com/user-attachments/assets/bf91036e-6e8a-4834-90d2-e834e63452da" /> | 마이 스크린 |<img width="831" alt="image" src="https://github.com/user-attachments/assets/76dff679-d871-49de-b7ba-89da587e4187" />| 
 
 ---
 
